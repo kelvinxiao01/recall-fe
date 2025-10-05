@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@fontsource/space-grotesk": "^5.2.10",
     "framer-motion": "^12.23.22",
     "motion": "^12.23.22",
     "next": "15.5.4",
