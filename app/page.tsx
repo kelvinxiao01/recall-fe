@@ -2,6 +2,29 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+
+function TypewriterText({ text, delay = 0 }: { text: string; delay?: number })
+{
+  const [displayedText, setDisplayedText] = useState("");
+  const [index, setIndex] = useState(0);
+
+  useEffect(() =>
+  {
+    const timeout = setTimeout(() =>
+    {
+      if (index < text.length)
+      {
+        setDisplayedText((prev) => prev + text[index]);
+        setIndex((prev) => prev + 1);
+      }
+    }, delay + (index === 0 ? 1 : 1));
+
+    return () => clearTimeout(timeout);
+  }, [index, text, delay]);
+
+  return <span>{displayedText}</span>;
+}
 
 export default function Home()
 {
@@ -42,10 +65,11 @@ export default function Home()
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
             <motion.div
-              className="flex items-center"
+              className="flex items-center gap-2"
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400 }}
             >
+              <img src="/logo.svg" alt="Recall Logo" className="w-8 h-8" style={{ filter: 'invert(64%) sepia(85%) saturate(1497%) hue-rotate(189deg) brightness(101%) contrast(97%)' }} />
               <h1 className="text-2xl font-bold text-blue-400">Recall</h1>
             </motion.div>
             <div className="flex gap-4">
@@ -71,14 +95,14 @@ export default function Home()
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
         <div className="text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-6xl font-bold text-white mb-6"
-          >
-            Never Miss a Call Again
-          </motion.h1>
+          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 min-h-[4.5rem] md:min-h-[5rem]">
+            <TypewriterText text="Never Miss a Call Again." delay={50} />
+            <motion.span
+              animate={{ opacity: [0, 1, 0] }}
+              transition={{ duration: 0.8, repeat: Infinity, repeatDelay: 0 }}
+              className="inline-block w-1 h-12 md:h-16 bg-blue-400 ml-1 align-middle"
+            />
+          </h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -95,12 +119,15 @@ export default function Home()
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Link
-              href="/auth"
+            <button
+              onClick={() =>
+              {
+                document.querySelector('.mt-24')?.scrollIntoView({ behavior: 'smooth' });
+              }}
               className="inline-block px-8 py-4 bg-blue-600 text-white text-lg font-semibold rounded-lg hover:bg-blue-500 transition-colors shadow-lg"
             >
-              Start Free Trial
-            </Link>
+              See How It Works
+            </button>
           </motion.div>
         </div>
 
@@ -311,7 +338,7 @@ export default function Home()
           className="mt-32 bg-gradient-to-r from-blue-600 to-blue-500 rounded-2xl p-12 text-center text-white shadow-2xl border border-blue-500/20"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Transform Your Business?</h2>
-          <p className="text-xl mb-8 opacity-90">Join thousands of businesses already using Recall</p>
+          <p className="text-xl mb-8 opacity-90">Join the passionate startup community already using Recall!</p>
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
