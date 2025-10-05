@@ -152,7 +152,7 @@ export default function Home()
             </motion.div>
             <h3 className="text-xl font-semibold mb-2 text-white">Automated Callbacks</h3>
             <p className="text-slate-400">
-              AI assistant automatically takes your callswhen you&apos;re busy. Automatic follow-ups too because we know your time is valuable.
+              AI assistant automatically takes your calls when you&apos;re busy. Automatic follow-ups too because we know your time is valuable.
             </p>
           </motion.div>
 
