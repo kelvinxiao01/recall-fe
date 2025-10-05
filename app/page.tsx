@@ -74,17 +74,17 @@ export default function Home()
             </motion.div>
             <div className="flex gap-4">
               <Link
-                href="/auth"
+                href="/dashboard"
                 className="px-4 py-2 text-slate-300 hover:text-white font-medium transition-colors"
               >
-                Sign In
+                Dashboard
               </Link>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Link
-                  href="/auth"
+                  href="/dashboard"
                   className="inline-block px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-500 transition-colors"
                 >
-                  Get Started
+                  Sign In
                 </Link>
               </motion.div>
             </div>
@@ -344,10 +344,10 @@ export default function Home()
             whileTap={{ scale: 0.95 }}
           >
             <Link
-              href="/auth"
+              href="/dashboard"
               className="inline-block px-8 py-4 bg-white text-blue-600 text-lg font-semibold rounded-lg hover:bg-slate-100 transition-colors shadow-lg"
             >
-              Get Started Free
+              See an example dashboard
             </Link>
           </motion.div>
         </motion.div>

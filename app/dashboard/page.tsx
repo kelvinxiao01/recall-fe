@@ -52,7 +52,7 @@ export default function Dashboard() {
           id: row.id,
           callerName: row.name,
           callerPhone: row.phone_number,
-          scheduledTime: row.meeting_date || "No date specified",
+          scheduledTime: row.meeting_date,
           status: "pending" as const, // Default status
           summary: row.notes,
         }));
@@ -88,7 +88,7 @@ export default function Dashboard() {
   };
 
   const formatDate = (dateString: string) => {
-    if (!dateString || dateString.trim() === "") {
+    if (!dateString) {
       return "No date specified";
     }
     const date = new Date(dateString);
@@ -137,12 +137,6 @@ export default function Dashboard() {
               <div className="hidden md:flex gap-6">
                 <a href="#" className="text-slate-300 hover:text-blue-400 font-medium">
                   Dashboard
-                </a>
-                <a href="#" className="text-gray-500 hover:text-slate-300">
-                  Settings
-                </a>
-                <a href="#" className="text-gray-500 hover:text-slate-300">
-                  Analytics
                 </a>
               </div>
             </div>
@@ -402,9 +396,7 @@ export default function Dashboard() {
                         Add to Calendar
                       </button>
                     )}
-                    <button className="px-4 py-2 border border-slate-600 text-slate-300 rounded-lg hover:bg-slate-700 transition-colors">
-                      View Details
-                    </button>
+                   
                   </div>
                 </div>
               </div>
