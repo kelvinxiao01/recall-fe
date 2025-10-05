@@ -11,7 +11,8 @@ export default function AuthPage() {
       <div className="max-w-md w-full">
         {/* Logo/Back */}
         <div className="text-center mb-8">
-          <Link href="/" className="text-3xl font-bold text-blue-400">
+          <Link href="/" className="inline-flex items-center gap-2 text-3xl font-bold text-blue-400">
+            <img src="/logo.svg" alt="Recall Logo" className="w-10 h-10" style={{ filter: 'invert(64%) sepia(85%) saturate(1497%) hue-rotate(189deg) brightness(101%) contrast(97%)' }} />
             Recall
           </Link>
           <p className="text-slate-300 mt-2">
