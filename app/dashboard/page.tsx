@@ -103,29 +103,29 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       {/* Navigation */}
-      <nav className="bg-white shadow-sm">
+      <nav className="bg-slate-800/50 backdrop-blur-sm border-b border-slate-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
             <div className="flex items-center gap-8">
-              <Link href="/" className="text-2xl font-bold text-blue-900">
+              <Link href="/" className="text-2xl font-bold text-blue-400">
                 Recall
               </Link>
               <div className="hidden md:flex gap-6">
-                <a href="#" className="text-gray-700 hover:text-blue-900 font-medium">
+                <a href="#" className="text-slate-300 hover:text-blue-400 font-medium">
                   Dashboard
                 </a>
-                <a href="#" className="text-gray-500 hover:text-gray-700">
+                <a href="#" className="text-gray-500 hover:text-slate-300">
                   Settings
                 </a>
-                <a href="#" className="text-gray-500 hover:text-gray-700">
+                <a href="#" className="text-gray-500 hover:text-slate-300">
                   Analytics
                 </a>
               </div>
             </div>
             <div className="flex items-center gap-4">
-              <button className="p-2 text-gray-400 hover:text-gray-600">
+              <button className="p-2 text-slate-400 hover:text-slate-300">
                 <svg
                   className="w-6 h-6"
                   fill="none"
@@ -141,7 +141,7 @@ export default function Dashboard() {
                 </svg>
               </button>
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-900 rounded-full flex items-center justify-center text-white font-semibold">
+                <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-semibold">
                   U
                 </div>
               </div>
@@ -154,17 +154,17 @@ export default function Dashboard() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Stats Overview */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white rounded-lg p-6 shadow-sm">
+          <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-lg p-6 shadow-sm">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Total Callbacks</p>
-                <p className="text-2xl font-bold text-gray-900 mt-1">
+                <p className="text-sm text-slate-400">Total Callbacks</p>
+                <p className="text-2xl font-bold text-white mt-1">
                   {mockCallLogs.length}
                 </p>
               </div>
-              <div className="w-12 h-12 bg-blue-900/10 rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
                 <svg
-                  className="w-6 h-6 text-blue-900"
+                  className="w-6 h-6 text-blue-400"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -180,17 +180,17 @@ export default function Dashboard() {
             </div>
           </div>
 
-          <div className="bg-white rounded-lg p-6 shadow-sm">
+          <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-lg p-6 shadow-sm">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Pending</p>
+                <p className="text-sm text-slate-400">Pending</p>
                 <p className="text-2xl font-bold text-yellow-600 mt-1">
                   {mockCallLogs.filter((c) => c.status === "pending").length}
                 </p>
               </div>
-              <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-yellow-500/20 rounded-lg flex items-center justify-center">
                 <svg
-                  className="w-6 h-6 text-yellow-600"
+                  className="w-6 h-6 text-yellow-400"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -206,17 +206,17 @@ export default function Dashboard() {
             </div>
           </div>
 
-          <div className="bg-white rounded-lg p-6 shadow-sm">
+          <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-lg p-6 shadow-sm">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Completed</p>
+                <p className="text-sm text-slate-400">Completed</p>
                 <p className="text-2xl font-bold text-green-600 mt-1">
                   {mockCallLogs.filter((c) => c.status === "completed").length}
                 </p>
               </div>
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center">
                 <svg
-                  className="w-6 h-6 text-green-600"
+                  className="w-6 h-6 text-green-400"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -232,15 +232,15 @@ export default function Dashboard() {
             </div>
           </div>
 
-          <div className="bg-white rounded-lg p-6 shadow-sm">
+          <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-lg p-6 shadow-sm">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Avg Duration</p>
-                <p className="text-2xl font-bold text-gray-900 mt-1">18 min</p>
+                <p className="text-sm text-slate-400">Avg Duration</p>
+                <p className="text-2xl font-bold text-white mt-1">18 min</p>
               </div>
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center">
                 <svg
-                  className="w-6 h-6 text-purple-600"
+                  className="w-6 h-6 text-purple-400"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -258,17 +258,17 @@ export default function Dashboard() {
         </div>
 
         {/* Calls Table */}
-        <div className="bg-white rounded-lg shadow-sm">
-          <div className="p-6 border-b border-gray-200">
+        <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-lg shadow-sm">
+          <div className="p-6 border-b border-slate-700">
             <div className="flex justify-between items-center">
-              <h2 className="text-xl font-semibold text-gray-900">Recent Callbacks</h2>
+              <h2 className="text-xl font-semibold text-white">Recent Callbacks</h2>
               <div className="flex gap-2">
                 <button
                   onClick={() => setActiveTab("all")}
                   className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                     activeTab === "all"
-                      ? "bg-blue-900 text-white"
-                      : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                      ? "bg-blue-600 text-white"
+                      : "bg-slate-700 text-slate-300 hover:bg-slate-600"
                   }`}
                 >
                   All
@@ -277,8 +277,8 @@ export default function Dashboard() {
                   onClick={() => setActiveTab("pending")}
                   className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                     activeTab === "pending"
-                      ? "bg-blue-900 text-white"
-                      : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                      ? "bg-blue-600 text-white"
+                      : "bg-slate-700 text-slate-300 hover:bg-slate-600"
                   }`}
                 >
                   Pending
@@ -287,8 +287,8 @@ export default function Dashboard() {
                   onClick={() => setActiveTab("completed")}
                   className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                     activeTab === "completed"
-                      ? "bg-blue-900 text-white"
-                      : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                      ? "bg-blue-600 text-white"
+                      : "bg-slate-700 text-slate-300 hover:bg-slate-600"
                   }`}
                 >
                   Completed
@@ -297,13 +297,13 @@ export default function Dashboard() {
             </div>
           </div>
 
-          <div className="divide-y divide-gray-200">
+          <div className="divide-y divide-slate-700">
             {filteredCalls.map((call) => (
-              <div key={call.id} className="p-6 hover:bg-gray-50 transition-colors">
+              <div key={call.id} className="p-6 hover:bg-slate-700/50 transition-colors">
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
-                      <h3 className="text-lg font-semibold text-gray-900">
+                      <h3 className="text-lg font-semibold text-white">
                         {call.callerName}
                       </h3>
                       <span
@@ -314,9 +314,9 @@ export default function Dashboard() {
                         {call.status}
                       </span>
                     </div>
-                    <p className="text-gray-600 mb-2">{call.callerPhone}</p>
-                    <p className="text-gray-700 mb-3">{call.summary}</p>
-                    <div className="flex items-center gap-4 text-sm text-gray-500">
+                    <p className="text-slate-400 mb-2">{call.callerPhone}</p>
+                    <p className="text-slate-300 mb-3">{call.summary}</p>
+                    <div className="flex items-center gap-4 text-sm text-slate-400">
                       <div className="flex items-center gap-1">
                         <svg
                           className="w-4 h-4"
@@ -357,7 +357,7 @@ export default function Dashboard() {
                     {call.status === "pending" && (
                       <button
                         onClick={() => handleAddToCalendar(call)}
-                        className="px-4 py-2 bg-blue-900 text-white rounded-lg hover:bg-blue-800 transition-colors flex items-center gap-2"
+                        className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-500 transition-colors flex items-center gap-2"
                       >
                         <svg
                           className="w-4 h-4"
@@ -375,7 +375,7 @@ export default function Dashboard() {
                         Add to Calendar
                       </button>
                     )}
-                    <button className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+                    <button className="px-4 py-2 border border-slate-600 text-slate-300 rounded-lg hover:bg-slate-700 transition-colors">
                       View Details
                     </button>
                   </div>
