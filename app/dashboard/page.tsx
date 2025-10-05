@@ -19,6 +19,7 @@ interface CallHistoryRow {
   name: string;
   phone_number: string;
   notes: string;
+  meeting_date: string;
 }
 
 export default function Dashboard() {
@@ -51,7 +52,7 @@ export default function Dashboard() {
           id: row.id,
           callerName: row.name,
           callerPhone: row.phone_number,
-          scheduledTime: new Date().toISOString(), // Default to current time
+          scheduledTime: row.meeting_date || "No date specified",
           status: "pending" as const, // Default status
           summary: row.notes,
         }));
@@ -87,7 +88,13 @@ export default function Dashboard() {
   };
 
   const formatDate = (dateString: string) => {
+    if (!dateString || dateString.trim() === "") {
+      return "No date specified";
+    }
     const date = new Date(dateString);
+    if (isNaN(date.getTime())) {
+      return "No date specified";
+    }
     return date.toLocaleString("en-US", {
       month: "short",
       day: "numeric",
