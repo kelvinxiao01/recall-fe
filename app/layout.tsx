@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next"
 import "@fontsource/space-grotesk/400.css";
 import "@fontsource/space-grotesk/500.css";
 import "@fontsource/space-grotesk/600.css";
@@ -19,6 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
         {children}
+        <Analytics />
       </body>
     </html>
   );
