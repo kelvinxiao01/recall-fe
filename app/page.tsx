@@ -109,8 +109,8 @@ export default function Home()
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto"
           >
-            AI-powered callback system that automatically calls back your customers when you&apos;re unavailable.
-            Schedule, manage, and track all your callbacks in one place.
+            Your AI receptionist that answers calls 24/7, gathers customer information, and schedules callbacks when you&apos;re busy.
+            Never leave customers waiting or miss important opportunities again.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -152,7 +152,7 @@ export default function Home()
             </motion.div>
             <h3 className="text-xl font-semibold mb-2 text-white">Automated Callbacks</h3>
             <p className="text-slate-400">
-              AI assistant automatically calls back customers and gathers important information when you&apos;re busy.
+              AI assistant automatically takes your calls when you&apos;re busy. Automatic follow-ups too because we know your time is valuable.
             </p>
           </motion.div>
 
@@ -175,7 +175,7 @@ export default function Home()
             </motion.div>
             <h3 className="text-xl font-semibold mb-2 text-white">Smart Scheduling</h3>
             <p className="text-slate-400">
-              Customers can schedule callbacks at their preferred time with seamless Google Calendar integration.
+              Customers can schedule callbacks at both of your preferred times with seamless Calendar integration.
             </p>
           </motion.div>
 
@@ -285,7 +285,7 @@ export default function Home()
               </motion.div>
               <h3 className="text-2xl font-semibold mb-3 text-white">Missed Call</h3>
               <p className="text-slate-400 text-lg leading-relaxed">
-                When a customer calls and you&apos;re unavailable, our system instantly detects the missed call and prepares to reach out on your behalf.
+                Dedicated receptionist that answers calls 24/7, gathers customer information, and schedules meetings so you can focus on important things.
               </p>
             </motion.div>
             <motion.div
@@ -304,7 +304,7 @@ export default function Home()
               </motion.div>
               <h3 className="text-2xl font-semibold mb-3 text-white">AI Callback</h3>
               <p className="text-slate-400 text-lg leading-relaxed">
-                Our AI assistant calls the customer back, gathers their information, understands their needs, and schedules a convenient callback time.
+                We follow up on missed meetings and reschedule them for you.
               </p>
             </motion.div>
             <motion.div
@@ -323,7 +323,7 @@ export default function Home()
               </motion.div>
               <h3 className="text-2xl font-semibold mb-3 text-white">You Connect</h3>
               <p className="text-slate-400 text-lg leading-relaxed">
-                Review all the details in your dashboard, add the appointment to your calendar, and call your customer at the scheduled time fully prepared.
+                Review all the details in your dashboard and just take the meeting that we automatically schedule for you.
               </p>
             </motion.div>
           </div>
@@ -338,7 +338,7 @@ export default function Home()
           className="mt-32 bg-gradient-to-r from-blue-600 to-blue-500 rounded-2xl p-12 text-center text-white shadow-2xl border border-blue-500/20"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Transform Your Business?</h2>
-          <p className="text-xl mb-8 opacity-90">Join the passionate startup community already using Recall!</p>
+          <p className="text-xl mb-8 opacity-90">Join the passionate community already using Recall!</p>
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
