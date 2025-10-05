@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { supabase } from "@/lib/supabase";
 
 interface CallLog {
   id: number;
@@ -13,48 +14,61 @@ interface CallLog {
   duration?: string;
 }
 
+interface CallHistoryRow {
+  id: number;
+  name: string;
+  phone_number: string;
+  notes: string;
+}
+
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState<"all" | "pending" | "completed">("all");
+  const [callLogs, setCallLogs] = useState<CallLog[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  // Mock data - will be replaced with actual API calls
-  const mockCallLogs: CallLog[] = [
-    {
-      id: 1,
-      callerName: "John Smith",
-      callerPhone: "+1 (555) 123-4567",
-      scheduledTime: "2025-10-05T14:00:00",
-      status: "pending",
-      summary: "Interested in premium package. Wants to discuss pricing options.",
-    },
-    {
-      id: 2,
-      callerName: "Sarah Johnson",
-      callerPhone: "+1 (555) 987-6543",
-      scheduledTime: "2025-10-05T16:30:00",
-      status: "pending",
-      summary: "Follow-up call regarding previous order. Has questions about delivery.",
-    },
-    {
-      id: 3,
-      callerName: "Mike Wilson",
-      callerPhone: "+1 (555) 456-7890",
-      scheduledTime: "2025-10-04T10:00:00",
-      status: "completed",
-      summary: "Requested technical support for product installation.",
-      duration: "15 min",
-    },
-    {
-      id: 4,
-      callerName: "Emily Davis",
-      callerPhone: "+1 (555) 321-0987",
-      scheduledTime: "2025-10-04T13:00:00",
-      status: "completed",
-      summary: "New customer inquiry about services. Wants product demonstration.",
-      duration: "22 min",
-    },
-  ];
+  useEffect(() => {
+    async function fetchCallHistory() {
+      try {
+        const { data, error } = await supabase
+          .from("call_history")
+          .select("*");
 
-  const filteredCalls = mockCallLogs.filter((call) => {
+        console.log("Supabase response:", { data, error });
+
+        if (error) {
+          console.error("Supabase error:", error);
+          throw error;
+        }
+
+        if (!data || data.length === 0) {
+          console.warn("No data found in call_history table");
+          setCallLogs([]);
+          return;
+        }
+
+        // Transform Supabase data to CallLog format
+        const transformedData: CallLog[] = data.map((row: CallHistoryRow) => ({
+          id: row.id,
+          callerName: row.name,
+          callerPhone: row.phone_number,
+          scheduledTime: new Date().toISOString(), // Default to current time
+          status: "pending" as const, // Default status
+          summary: row.notes,
+        }));
+
+        console.log("Transformed data:", transformedData);
+        setCallLogs(transformedData);
+      } catch (error) {
+        console.error("Error fetching call history:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchCallHistory();
+  }, []);
+
+  const filteredCalls = callLogs.filter((call) => {
     if (activeTab === "all") return true;
     return call.status === activeTab;
   });
@@ -159,7 +173,7 @@ export default function Dashboard() {
               <div>
                 <p className="text-sm text-slate-400">Total Callbacks</p>
                 <p className="text-2xl font-bold text-white mt-1">
-                  {mockCallLogs.length}
+                  {callLogs.length}
                 </p>
               </div>
               <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
@@ -185,7 +199,7 @@ export default function Dashboard() {
               <div>
                 <p className="text-sm text-slate-400">Pending</p>
                 <p className="text-2xl font-bold text-yellow-600 mt-1">
-                  {mockCallLogs.filter((c) => c.status === "pending").length}
+                  {callLogs.filter((c) => c.status === "pending").length}
                 </p>
               </div>
               <div className="w-12 h-12 bg-yellow-500/20 rounded-lg flex items-center justify-center">
@@ -211,7 +225,7 @@ export default function Dashboard() {
               <div>
                 <p className="text-sm text-slate-400">Completed</p>
                 <p className="text-2xl font-bold text-green-600 mt-1">
-                  {mockCallLogs.filter((c) => c.status === "completed").length}
+                  {callLogs.filter((c) => c.status === "completed").length}
                 </p>
               </div>
               <div className="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center">
@@ -298,8 +312,13 @@ export default function Dashboard() {
           </div>
 
           <div className="divide-y divide-slate-700">
-            {filteredCalls.map((call) => (
-              <div key={call.id} className="p-6 hover:bg-slate-700/50 transition-colors">
+            {loading ? (
+              <div className="p-6 text-center text-slate-400">Loading...</div>
+            ) : filteredCalls.length === 0 ? (
+              <div className="p-6 text-center text-slate-400">No calls found</div>
+            ) : (
+              filteredCalls.map((call) => (
+                <div key={call.id} className="p-6 hover:bg-slate-700/50 transition-colors">
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
@@ -381,7 +400,8 @@ export default function Dashboard() {
                   </div>
                 </div>
               </div>
-            ))}
+              ))
+            )}
           </div>
         </div>
       </div>
